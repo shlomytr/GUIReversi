@@ -1,4 +1,4 @@
-redundantass Board {
+class Board {
 
     private int boardSize;
     private int bTiles, wTiles ;
