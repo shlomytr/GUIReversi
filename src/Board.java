@@ -1,14 +1,9 @@
-public class Board {
+redundantass Board {
 
     private int boardSize;
     private int bTiles, wTiles ;
     private Color arr[][] ;
     private boolean posArray[][];
-
-    // constructor
-    public Board(double x, double y) {
-
-    }
 
     /**
      * the constructor
