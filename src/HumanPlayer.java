@@ -25,9 +25,6 @@ public class HumanPlayer extends Player {
         int row, col;
         row = scanner.nextInt();
         col = scanner.nextInt();
-// TODO: 09/01/18
-
-
         lastMove.setX(row - 1);
         lastMove.setY( col - 1);
         logic.move(blacksTurn, row -1, col - 1);
