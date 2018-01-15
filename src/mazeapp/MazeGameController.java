@@ -8,13 +8,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MazeGameController implements Initializable {
-
     @FXML
     private HBox root;
     private int[][] maze = {
-            {0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
-            {0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0},
-            //...
+            {0,1,0,1,0,0,0,1,0,0,0},
+            {0,1,0,1,1,1,0,1,0,1,0},
+//...
     };
 
     @Override
@@ -24,19 +23,16 @@ public class MazeGameController implements Initializable {
         mazeBoard.setPrefHeight(400);
         root.getChildren().add(0, mazeBoard);
         mazeBoard.draw();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //...
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 120;
             mazeBoard.setPrefWidth(boardNewWidth);
             mazeBoard.draw();
         });
+
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             mazeBoard.setPrefHeight(newValue.doubleValue());
             mazeBoard.draw();
         });
     }
+
 }
