@@ -30,7 +30,6 @@ public class MenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("start");
     }
 
     @FXML private void gameSettings() {
