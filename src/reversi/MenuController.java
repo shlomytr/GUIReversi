@@ -46,7 +46,6 @@ public class MenuController {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        System.out.println("settings");
     }
 
 
