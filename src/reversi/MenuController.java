@@ -19,12 +19,12 @@ public class MenuController {
 
     @FXML private void gameStart() {
         Stage stage = (Stage) start.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Game.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReversiGame.fxml"));
         try {
             HBox root = (HBox) loader.load();
             loader.setController(new GameController());
             Scene gameScene = new Scene(root, 600, 400);
-            gameScene.getStylesheets().add(getClass().getResource("GameStyle.css").toExternalForm());
+//            gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setScene(gameScene);
             stage.show();
         } catch (IOException e) {
