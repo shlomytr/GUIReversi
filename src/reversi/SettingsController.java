@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static javax.script.ScriptEngine.FILENAME;
+
 public class SettingsController  implements Initializable {
 
     @FXML private ComboBox<Integer> boardSize;
@@ -26,6 +28,7 @@ public class SettingsController  implements Initializable {
     @FXML private ComboBox<String> secondColor;
     @FXML private Button cancel;
     @FXML private Button save;
+    private static final String FILENAME = "./src/settingsFile.txt";
 
     @FXML public void save() {
         int size = boardSize.getValue();
@@ -89,7 +92,7 @@ public class SettingsController  implements Initializable {
 
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream("./src/settingsFile.txt")));
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(FILENAME)));
             String line;
 
             boardSize.setValue(Integer.parseInt(reader.readLine()));
