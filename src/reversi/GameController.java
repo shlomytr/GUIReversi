@@ -67,13 +67,10 @@ public class GameController implements Initializable {
             white= reader.readLine();
 
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Error: Error reading file");
-            alert.setContentText("The default settings will be used.");
             boardSize = 8;
             black= "Black";
             white= "White";
-            alert.showAndWait();
+            sendAlert("Error: Error reading file", "The default settings will be used.");
         }
         firstsTurn=true;
         currentPlayer.setText("Current Player: "+ black);
@@ -111,11 +108,17 @@ public class GameController implements Initializable {
                 gridBoard.moveGUI(firstsTurn, p.getX(),p.getY());
             }
             else
-                //TODO:alert
+                sendAlert("Invalid Move", "please chose a valid move");
         }
     }
 
 
+    public void sendAlert(String header, String contact) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(header);
+        alert.setContentText(contact);
+        alert.showAndWait();
+    }
 
 
 }
