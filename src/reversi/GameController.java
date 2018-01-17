@@ -23,6 +23,7 @@ public class GameController implements Initializable {
     private static HumanPlayer BPlayer,WPlayer;
     private static DeafultLogic logic;
     private static Board board;
+    private static boolean firstsTurn;
     private static final String FILENAME = "./src/settingsFile.txt";
     @FXML
     private Button exit;
@@ -69,13 +70,15 @@ public class GameController implements Initializable {
             white= "White";
             alert.showAndWait();
         }
+        firstsTurn=true;
+        currentPlayer.setText("Current Player: "+ black);
         player1L.setText(black+ " Score: 2");
         player2L.setText(white+ " Score: 2");
         board = new Board(boardSize);
         logic = new DeafultLogic(board);
         BPlayer = new HumanPlayer(logic);
         WPlayer = new HumanPlayer(logic);
-        GridBoard gridBoard = new GridBoard(board,logic,BPlayer,WPlayer);
+        GridBoard gridBoard = new GridBoard(board,logic,BPlayer,WPlayer, black,white);
         gridBoard.setPrefWidth(400);
         gridBoard.setPrefHeight(400);
         root.getChildren().add(0, gridBoard);
