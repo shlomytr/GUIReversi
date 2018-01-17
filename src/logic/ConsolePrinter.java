@@ -6,9 +6,9 @@ public class  ConsolePrinter implements Printer {
     @Override
     public void printNextTurn(boolean blacksTurn) {
         if (blacksTurn)
-            System.out.println("The next move - logic.Player x:\n");
+            System.out.println("The next move - Player x:\n");
         else
-            System.out.println("The next move - logic.Player o:\n");
+            System.out.println("The next move - Player o:\n");
     }
 
     @Override

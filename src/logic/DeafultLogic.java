@@ -3,7 +3,7 @@ package logic;
 public class DeafultLogic extends GameLogic {
 
 
-    DeafultLogic(Board board) {
+    public DeafultLogic(Board board) {
         super(board);
     }
 

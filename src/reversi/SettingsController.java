@@ -76,7 +76,7 @@ public class SettingsController implements Initializable {
                 VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
                 Scene scene = new Scene(root, 600, 400);
 //            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-                primaryStage.setTitle("Reversi logic.Game");
+                primaryStage.setTitle("Reversi Game");
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (Exception e) {
@@ -93,7 +93,7 @@ public class SettingsController implements Initializable {
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
             Scene scene = new Scene(root, 600, 400);
 //            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-            primaryStage.setTitle("Reversi logic.Game");
+            primaryStage.setTitle("Reversi Game");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {

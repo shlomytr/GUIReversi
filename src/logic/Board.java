@@ -1,6 +1,6 @@
 package logic;
 
-class Board {
+public class Board {
 
     private int boardSize;
     private int bTiles, wTiles ;

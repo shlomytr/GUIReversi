@@ -4,26 +4,22 @@ import java.util.Scanner;
 
 public class HumanPlayer extends Player {
 
-    protected Printer printer;
     private Scanner scanner = new Scanner(System.in);
 
     /**
      * the constructor
      * @param  gameLogic gameLogic
-     * @param  printer printer
      **/
-    HumanPlayer(GameLogic gameLogic, Printer printer) {
+    public HumanPlayer(GameLogic gameLogic) {
         super(gameLogic);
         this.canPlay = true;
         this.type = 1;
-        this.printer = printer;
     }
 
 
     @Override
     void playOneTurn(boolean blacksTurn) {
         this.canPlay = true;
-        printer.printEnterNextTurn();
         int row, col;
         row = scanner.nextInt();
         col = scanner.nextInt();
