@@ -28,6 +28,7 @@ public class GameController implements Initializable {
     private static Board board;
     private static boolean firstsTurn;
     private static final String FILENAME = "./src/settingsFile.txt";
+    private static final double PANELSIZE = 400;
     @FXML
     private Button exit;
     private GridBoard gridBoard;
@@ -90,10 +91,20 @@ public class GameController implements Initializable {
             System.out.println(y);
 
         });
-        gridBoard.setPrefWidth(400);
-        gridBoard.setPrefHeight(400);
+        gridBoard.setPrefWidth(PANELSIZE);
+        gridBoard.setPrefHeight(PANELSIZE);
         gridBoard.draw();
         root.getChildren().add(0, gridBoard);
+    }
+
+    private static Point getClickedPoint(double x, double y){
+        if (x>=PANELSIZE || y>=PANELSIZE)
+            return new Point(-10,-10);
+        double sizeOfCell = ((double) (PANELSIZE)) / ((double) (board.getBoardSize()));
+        double x1 = x / sizeOfCell;
+        double y1 = y / sizeOfCell;
+        //set the point.
+        return new Point((int) x1, (int) y1);
     }
 
 
