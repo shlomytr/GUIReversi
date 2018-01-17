@@ -87,8 +87,9 @@ public class GameController implements Initializable {
         gridBoard.setOnMouseClicked(event ->{
             double x = event.getX();
             double y = event.getY();
-            System.out.println(x);
-            System.out.println(y);
+            Point p = getClickedPoint(x,y);
+            System.out.println(p.getX());
+            System.out.println(p.getY());
 
         });
         gridBoard.setPrefWidth(PANELSIZE);
@@ -98,13 +99,10 @@ public class GameController implements Initializable {
     }
 
     private static Point getClickedPoint(double x, double y){
-        if (x>=PANELSIZE || y>=PANELSIZE)
-            return new Point(-10,-10);
-        double sizeOfCell = ((double) (PANELSIZE)) / ((double) (board.getBoardSize()));
+        Double sizeOfCell = ((double) (PANELSIZE)) / ((double) (board.getBoardSize()));
         double x1 = x / sizeOfCell;
         double y1 = y / sizeOfCell;
-        //set the point.
-        return new Point((int) x1, (int) y1);
+        return new Point((int)x1,(int)y1);
     }
 
 
