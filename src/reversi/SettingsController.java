@@ -21,10 +21,24 @@ public class SettingsController  implements Initializable {
     @FXML private Button save;
 
     @FXML public void save() {
-//        int size = boardSize.getValue();
-//        Color color1 = firstColor.getValue();
-//        Color color2 = secondColor.getValue();
-        System.out.println("save");
+        int size = boardSize.getValue();
+        String color1 = firstColor.getValue();
+        String color2 = secondColor.getValue();
+//        System.out.println(color1);
+
+        //save the parameters to the file
+
+        try {
+            Stage primaryStage = (Stage) this.save.getScene().getWindow();
+            VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
+            Scene scene = new Scene(root,600,400);
+//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            primaryStage.setTitle("Reversi Game");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML public void cancel() {
@@ -32,7 +46,7 @@ public class SettingsController  implements Initializable {
             Stage primaryStage = (Stage) this.cancel.getScene().getWindow();
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
             Scene scene = new Scene(root,600,400);
-//            scene.getStylesheets().add(getClass().getResource("application").toExternalForm());
+//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi Game");
             primaryStage.setScene(scene);
             primaryStage.show();
