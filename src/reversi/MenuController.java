@@ -17,6 +17,8 @@ public class MenuController {
 
     @FXML private Button settings;
 
+    @FXML private Button exit;
+
     @FXML private void gameStart() {
         Stage stage = (Stage) start.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReversiGame.fxml"));
@@ -47,5 +49,11 @@ public class MenuController {
         }
     }
 
+    @FXML private void gameExit() {
+        Stage stage = (Stage) this.exit.getScene().getWindow();
+        stage.close();
+    }
 
-}
+
+
+    }
