@@ -37,11 +37,16 @@ public class GridBoard extends GridPane {
         int cellHeight = height / board.getBoardSize();
         int cellWidth = width / board.getBoardSize();
         int radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
+        javafx.scene.paint.Color color;
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
-                Rectangle rectangle = new Rectangle(cellWidth, cellHeight, TRANSPARENT);
+                color = TRANSPARENT;
+                if(board.getPosCell(i,j))
+                    color = javafx.scene.paint.Color.YELLOW;
+                Rectangle rectangle = new Rectangle(cellWidth, cellHeight, color);
                 rectangle.setStroke(javafx.scene.paint.Color.BLACK);
                 this.add(rectangle, i, j);
+
 
                 if (board.getCell(i, j) == Color.empty) {
                     Circle circle = new Circle(radius, TRANSPARENT);
