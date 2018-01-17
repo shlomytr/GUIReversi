@@ -72,4 +72,8 @@ public class GridBoard extends GridPane {
         }
     }
 
+    public void moveGUI(boolean firstsTurn, int col, int row){
+
+    }
+
 }

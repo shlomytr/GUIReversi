@@ -8,7 +8,7 @@ public class DeafultLogic extends GameLogic {
     }
 
     @Override
-    boolean possibleMoves(boolean blacksTurn, int type, Printer printer) {
+    public boolean possibleMoves(boolean blacksTurn, int type, Printer printer) {
         boolean thereArePosMoves = false;
         for (int i = 0; i < board.getBoardSize(); i++)
             for (int j = 0; j < board.getBoardSize(); j++)
@@ -25,8 +25,8 @@ public class DeafultLogic extends GameLogic {
                                 }
             }
         }
-        //if (thereArePosMoves && (type == 1 || type ==3))
-            //printer.printPosMoves(board);
+        if (thereArePosMoves && (type == 1 || type ==3))
+            printer.printPosMoves(board);
         return thereArePosMoves;
     }
 

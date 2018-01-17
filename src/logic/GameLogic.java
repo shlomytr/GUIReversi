@@ -23,7 +23,7 @@ public abstract class GameLogic {
      * @param row row coordinates
      * @param col col coordinates
      **/
-    void move(boolean blacksTurn, int row, int col) {
+    public void move(boolean blacksTurn, int row, int col) {
         boolean foundATileToSwitch = false;
         for (int k = -1; k < 2; k++)
             for (int l = -1; l < 2; l++)

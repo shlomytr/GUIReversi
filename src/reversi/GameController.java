@@ -88,9 +88,7 @@ public class GameController implements Initializable {
             double x = event.getX();
             double y = event.getY();
             Point p = getClickedPoint(x,y);
-            System.out.println(p.getX());
-            System.out.println(p.getY());
-
+            tryToPlay(p);
         });
         gridBoard.setPrefWidth(PANELSIZE);
         gridBoard.setPrefHeight(PANELSIZE);
@@ -106,8 +104,15 @@ public class GameController implements Initializable {
     }
 
 
-    public void tryToPlay(){
-        BPlayer.playOneTurn(firstsTurn);
+    private void tryToPlay(Point p){
+        if(logic.possibleMoves(firstsTurn,2,null) ){
+            if (board.getPosCell(p.getX(), p.getY())){
+                logic.move(firstsTurn, p.getX(),p.getY());
+                gridBoard.moveGUI(firstsTurn, p.getX(),p.getY());
+            }
+            else
+                //TODO:alert
+        }
     }
 
 
