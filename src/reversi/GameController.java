@@ -80,6 +80,7 @@ public class GameController implements Initializable {
         logic = new DeafultLogic(board);
         BPlayer = new HumanPlayer(logic);
         WPlayer = new HumanPlayer(logic);
+        logic.possibleMoves(firstsTurn,2,null);
         gridBoard = new GridBoard(board,logic,BPlayer,WPlayer, black,white);
         gridBoard.setOnMouseClicked(event ->{
             double x = event.getX();
@@ -105,7 +106,8 @@ public class GameController implements Initializable {
         if(logic.possibleMoves(firstsTurn,2,null) ){
             if (board.getPosCell(p.getX(), p.getY())){
                 logic.move(firstsTurn, p.getX(),p.getY());
-                gridBoard.moveGUI(firstsTurn, p.getX(),p.getY());
+                gridBoard.draw();
+                firstsTurn=!firstsTurn;
             }
             else
                 sendAlert("Invalid Move", "please chose a valid move");

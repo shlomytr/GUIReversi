@@ -9,15 +9,16 @@ import javafx.scene.shape.Rectangle;
 import logic.*;
 
 import java.io.IOException;
+import java.util.TreeMap;
 
 import static javafx.scene.paint.Color.TRANSPARENT;
+import static javafx.scene.paint.Color.YELLOW;
 
 public class GridBoard extends GridPane {
     private static String black,white;
     private static HumanPlayer BPlayer,WPlayer;
     private static DeafultLogic logic;
     private static Board board;
-    private static int radius;
     public GridBoard(Board board, DeafultLogic logic, HumanPlayer BPlayer, HumanPlayer WPlayer,String black,String white) {
         this.board = board;
         this.logic = logic;
@@ -25,16 +26,6 @@ public class GridBoard extends GridPane {
         this.WPlayer = WPlayer;
         this.black = black;
         this.white = white;
-       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GridBoardFX.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }*/
 
     }
 
@@ -45,7 +36,7 @@ public class GridBoard extends GridPane {
 
         int cellHeight = height / board.getBoardSize();
         int cellWidth = width / board.getBoardSize();
-        radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
+        int radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 Rectangle rectangle = new Rectangle(cellWidth, cellHeight, TRANSPARENT);
@@ -73,15 +64,5 @@ public class GridBoard extends GridPane {
         }
     }
 
-    public void moveGUI(boolean firstsTurn, int row, int col){
-        this.getChildren().remove(row, col);
-        if (firstsTurn){
-            Circle circle = new Circle(radius, javafx.scene.paint.Color.web(black));
-            this.add(circle, row, col);
-            this.setValignment(circle, VPos.CENTER);
-            this.setHalignment(circle, HPos.CENTER);
-        }
-
-    }
 
 }
