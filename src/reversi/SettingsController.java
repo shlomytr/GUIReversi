@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
@@ -21,65 +22,81 @@ import java.util.ResourceBundle;
 
 import static javax.script.ScriptEngine.FILENAME;
 
-public class SettingsController  implements Initializable {
+public class SettingsController implements Initializable {
 
-    @FXML private ComboBox<Integer> boardSize;
-    @FXML private ComboBox<String> firstColor;
-    @FXML private ComboBox<String> secondColor;
-    @FXML private Button cancel;
-    @FXML private Button save;
+    @FXML
+    private ComboBox<Integer> boardSize;
+    @FXML
+    private ComboBox<String> firstColor;
+    @FXML
+    private ComboBox<String> secondColor;
+    @FXML
+    private Button cancel;
+    @FXML
+    private Button save;
     private static final String FILENAME = "./src/settingsFile.txt";
 
-    @FXML public void save() {
+    @FXML
+    public void save() {
         int size = boardSize.getValue();
         boardSize.getValue().toString();
         String color1 = firstColor.getValue();
         String color2 = secondColor.getValue();
-        BufferedWriter bf = null;
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter(FILENAME);
-            bf = new BufferedWriter(fw);
-            bf.write(Integer.toString(size));
-            bf.newLine();
-            bf.write(color1);
-            bf.newLine();
-            bf.write(color2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+
+        if (color1 == color2) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error: Identical color");
+            alert.setContentText("You chose the same color to both of the players.\nPlease change one of the player's color");
+            alert.showAndWait();
+        } else {
+            BufferedWriter bf = null;
+            FileWriter fw = null;
             try {
-                if (bf != null)
-                    bf.close();
-                if (fw != null)
-                    fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                fw = new FileWriter(FILENAME);
+                bf = new BufferedWriter(fw);
+                bf.write(Integer.toString(size));
+                bf.newLine();
+                bf.write(color1);
+                bf.newLine();
+                bf.write(color2);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (bf != null)
+                        bf.close();
+                    if (fw != null)
+                        fw.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            try {
+                Stage primaryStage = (Stage) this.save.getScene().getWindow();
+                VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
+                Scene scene = new Scene(root, 600, 400);
+//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+                primaryStage.setTitle("Reversi Game");
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
-        try {
-            Stage primaryStage = (Stage) this.save.getScene().getWindow();
-            VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
-            Scene scene = new Scene(root,600,400);
-//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-            primaryStage.setTitle("Reversi Game");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
-    @FXML public void cancel() {
+    @FXML
+    public void cancel() {
         try {
             Stage primaryStage = (Stage) this.cancel.getScene().getWindow();
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
-            Scene scene = new Scene(root,600,400);
+            Scene scene = new Scene(root, 600, 400);
 //            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi Game");
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -98,8 +115,8 @@ public class SettingsController  implements Initializable {
             boardSize.setValue(Integer.parseInt(reader.readLine()));
             firstColor.setValue(reader.readLine());
             secondColor.setValue(reader.readLine());
-        }catch (IOException e) {
-                System . out . println (" Something went wrong while reading !");
-            }
+        } catch (IOException e) {
+            System.out.println(" Something went wrong while reading !");
+        }
     }
 }
