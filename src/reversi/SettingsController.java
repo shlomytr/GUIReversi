@@ -110,8 +110,6 @@ public class SettingsController implements Initializable {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(FILENAME)));
-            String line;
-
             boardSize.setValue(Integer.parseInt(reader.readLine()));
             firstColor.setValue(reader.readLine());
             secondColor.setValue(reader.readLine());

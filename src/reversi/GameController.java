@@ -34,12 +34,11 @@ public class GameController implements Initializable {
     @FXML
     private Label currentPlayer;
     @FXML
-    private HBox Hroot;
+    private HBox root;
     @FXML
     private Label player1L;
     @FXML
     private Label player2L;
-
 
     @FXML private void exitToMenu() {
         try {
@@ -93,13 +92,8 @@ public class GameController implements Initializable {
         });
         gridBoard.setPrefWidth(400);
         gridBoard.setPrefHeight(400);
-        Hroot.getChildren().add(0, gridBoard);
-    }
-
-
-    @FXML private void clickedTile(MouseEvent event){
-        //Point p = calculatePoint(event.getX(), event.getY());
-        System.out.println("x: " + event.getX() + "\ny: " + event.getY());
+        gridBoard.draw();
+        root.getChildren().add(0, gridBoard);
     }
 
 
