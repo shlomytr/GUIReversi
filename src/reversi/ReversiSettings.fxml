@@ -26,17 +26,17 @@
       <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label prefHeight="19.0" prefWidth="111.0" text="Player 2 Color:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label prefHeight="19.0" prefWidth="111.0" text="logic.Player 2 logic.Color:" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label prefHeight="19.0" prefWidth="111.0" text="Player 1 Color:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Label prefHeight="19.0" prefWidth="111.0" text="logic.Player 1 logic.Color:" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label prefHeight="18.0" prefWidth="84.0" text="Board size:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label prefHeight="18.0" prefWidth="84.0" text="logic.Board size:" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="15.0" />
          </font>
