@@ -108,10 +108,21 @@ public class GameController implements Initializable {
                 logic.move(firstsTurn, p.getX(),p.getY());
                 gridBoard.draw();
                 firstsTurn=!firstsTurn;
+                player1L.setText(black+ " Score: "+board.getBTiles());
+                player2L.setText(white+ " Score: "+board.getWTiles());
+                if (firstsTurn)
+                    currentPlayer.setText("Current Player: "+ black);
+                else
+                    currentPlayer.setText("Current Player: "+ white);
             }
             else
                 sendAlert("Invalid Move", "please chose a valid move");
         }
+        else {
+            sendAlert("No Move", "There is no possible move\n The turn goes to the other player");
+            firstsTurn=!firstsTurn;
+        }
+
     }
 
 
