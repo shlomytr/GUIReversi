@@ -17,6 +17,7 @@ public class GridBoard extends GridPane {
     private static HumanPlayer BPlayer,WPlayer;
     private static DeafultLogic logic;
     private static Board board;
+    private static int radius;
     public GridBoard(Board board, DeafultLogic logic, HumanPlayer BPlayer, HumanPlayer WPlayer,String black,String white) {
         this.board = board;
         this.logic = logic;
@@ -44,7 +45,7 @@ public class GridBoard extends GridPane {
 
         int cellHeight = height / board.getBoardSize();
         int cellWidth = width / board.getBoardSize();
-        int radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
+        radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 Rectangle rectangle = new Rectangle(cellWidth, cellHeight, TRANSPARENT);
@@ -53,17 +54,17 @@ public class GridBoard extends GridPane {
 
                 if (board.getCell(i, j) == Color.empty) {
                     Circle circle = new Circle(radius, TRANSPARENT);
-                    this.add(circle, j, i);
+                    this.add(circle, i, j);
                     this.setValignment(circle, VPos.CENTER);
                     this.setHalignment(circle, HPos.CENTER);
                 } else if (board.getCell(i, j) == Color.black) {
                     Circle circle = new Circle(radius, javafx.scene.paint.Color.web(black));
-                    this.add(circle, j, i);
+                    this.add(circle, i, j);
                     this.setValignment(circle, VPos.CENTER);
                     this.setHalignment(circle, HPos.CENTER);
                 } else if (board.getCell(i, j) == Color.white) {
                     Circle circle = new Circle(radius, javafx.scene.paint.Color.web(white));
-                    this.add(circle, j, i);
+                    this.add(circle, i, j);
                     this.setValignment(circle, VPos.CENTER);
                     this.setHalignment(circle, HPos.CENTER);
                 }
@@ -72,7 +73,14 @@ public class GridBoard extends GridPane {
         }
     }
 
-    public void moveGUI(boolean firstsTurn, int col, int row){
+    public void moveGUI(boolean firstsTurn, int row, int col){
+        this.getChildren().remove(row, col);
+        if (firstsTurn){
+            Circle circle = new Circle(radius, javafx.scene.paint.Color.web(black));
+            this.add(circle, row, col);
+            this.setValignment(circle, VPos.CENTER);
+            this.setHalignment(circle, HPos.CENTER);
+        }
 
     }
 
