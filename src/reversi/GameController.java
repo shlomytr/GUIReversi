@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.*;
@@ -25,6 +26,8 @@ public class GameController implements Initializable {
     private static final String FILENAME = "./src/settingsFile.txt";
     @FXML
     private Button exit;
+    @FXML
+    private HBox root;
     @FXML
     private Label currentPlayer;
     @FXML
@@ -72,7 +75,10 @@ public class GameController implements Initializable {
         logic = new DeafultLogic(board);
         BPlayer = new HumanPlayer(logic);
         WPlayer = new HumanPlayer(logic);
-
+        GridBoard gridBoard = new GridBoard(board,logic,BPlayer,WPlayer);
+        gridBoard.setPrefWidth(400);
+        gridBoard.setPrefHeight(400);
+        root.getChildren().add(0, gridBoard);
     }
 
 
