@@ -55,11 +55,13 @@ public class GridBoard extends GridPane {
                     this.setHalignment(circle, HPos.CENTER);
                 } else if (board.getCell(i, j) == Color.black) {
                     Circle circle = new Circle(radius, javafx.scene.paint.Color.web(black));
+                    circle.setStroke(javafx.scene.paint.Color.BLACK);
                     this.add(circle, i, j);
                     this.setValignment(circle, VPos.CENTER);
                     this.setHalignment(circle, HPos.CENTER);
                 } else if (board.getCell(i, j) == Color.white) {
                     Circle circle = new Circle(radius, javafx.scene.paint.Color.web(white));
+                    circle.setStroke(javafx.scene.paint.Color.BLACK);
                     this.add(circle, i, j);
                     this.setValignment(circle, VPos.CENTER);
                     this.setHalignment(circle, HPos.CENTER);
