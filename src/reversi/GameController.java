@@ -81,6 +81,7 @@ public class GameController implements Initializable {
         GridBoard gridBoard = new GridBoard(board,logic,BPlayer,WPlayer, black,white);
         gridBoard.setPrefWidth(400);
         gridBoard.setPrefHeight(400);
+        gridBoard.draw();
         root.getChildren().add(0, gridBoard);
     }
 
