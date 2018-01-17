@@ -142,14 +142,14 @@ public class GameController implements Initializable {
     private void gameOver(){
         String winner;
         if (board.getBTiles() > board.getWTiles())
-            winner="Black!";
+            winner=black+"!";
         else if (board.getBTiles() < board.getWTiles())
-            winner="White!";
+            winner=white+"!";
         else
             winner="no one! The game ended as a draw!";
 
-        sendAlert(1,"The winner is "+ winner,"The game is finished!\nThe final score is: Black = " + board.getBTiles() + "\tWhite = "
-                + board.getWTiles());
+        sendAlert(1,"The winner is "+ winner,"The game is finished!\nThe final score is: "
+                +black+" = " + board.getBTiles() + "\t"+ white+" = " + board.getWTiles());
 
     }
 
