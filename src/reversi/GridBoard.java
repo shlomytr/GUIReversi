@@ -24,7 +24,7 @@ public class GridBoard extends GridPane {
         this.WPlayer = WPlayer;
         this.black = black;
         this.white = white;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GridBoardFX.fxml"));
+       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GridBoardFX.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -33,10 +33,7 @@ public class GridBoard extends GridPane {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
-    }
-
-    public void draw() {
+        }*/
         this.getChildren().clear();
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
