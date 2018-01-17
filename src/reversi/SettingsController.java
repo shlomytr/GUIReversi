@@ -9,6 +9,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,6 +26,7 @@ public class SettingsController  implements Initializable {
 
     @FXML public void save() {
         int size = boardSize.getValue();
+        boardSize.getValue().toString();
         String color1 = firstColor.getValue();
         String color2 = secondColor.getValue();
 //        System.out.println(color1);
@@ -60,8 +65,17 @@ public class SettingsController  implements Initializable {
         firstColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         secondColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         boardSize.getItems().addAll(4, 6, 8, 10, 12, 14, 16, 18, 20);
-        firstColor.setValue("Black");
-        secondColor.setValue("White");
-        boardSize.setValue(8);
+
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream("./src/settingsFile.txt")));
+            String line;
+
+            boardSize.setValue(Integer.parseInt(reader.readLine()));
+            firstColor.setValue(reader.readLine());
+            secondColor.setValue(reader.readLine());
+        }catch (IOException e) {
+                System . out . println (" Something went wrong while reading !");
+            }
     }
 }
