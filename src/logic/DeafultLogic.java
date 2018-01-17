@@ -25,8 +25,8 @@ public class DeafultLogic extends GameLogic {
                                 }
             }
         }
-        if (thereArePosMoves && (type == 1 || type ==3))
-            printer.printPosMoves(board);
+        //if (thereArePosMoves && (type == 1 || type ==3))
+            //printer.printPosMoves(board);
         return thereArePosMoves;
     }
 

@@ -1,5 +1,6 @@
 package reversi;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,14 +30,16 @@ public class GameController implements Initializable {
     private static final String FILENAME = "./src/settingsFile.txt";
     @FXML
     private Button exit;
-    @FXML
-    private HBox root;
+    private GridBoard gridBoard;
     @FXML
     private Label currentPlayer;
+    @FXML
+    private HBox Hroot;
     @FXML
     private Label player1L;
     @FXML
     private Label player2L;
+
 
     @FXML private void exitToMenu() {
         try {
@@ -78,11 +83,31 @@ public class GameController implements Initializable {
         logic = new DeafultLogic(board);
         BPlayer = new HumanPlayer(logic);
         WPlayer = new HumanPlayer(logic);
-        GridBoard gridBoard = new GridBoard(board,logic,BPlayer,WPlayer, black,white);
+        gridBoard = new GridBoard(board,logic,BPlayer,WPlayer, black,white);
+        gridBoard.setOnMouseClicked(event ->{
+            double x = event.getX();
+            double y = event.getY();
+            System.out.println(x);
+            System.out.println(y);
+
+        });
         gridBoard.setPrefWidth(400);
         gridBoard.setPrefHeight(400);
-        root.getChildren().add(0, gridBoard);
+        Hroot.getChildren().add(0, gridBoard);
     }
+
+
+    @FXML private void clickedTile(MouseEvent event){
+        //Point p = calculatePoint(event.getX(), event.getY());
+        System.out.println("x: " + event.getX() + "\ny: " + event.getY());
+    }
+
+
+    public void tryToPlay(){
+        BPlayer.playOneTurn(firstsTurn);
+    }
+
+
 
 
 }

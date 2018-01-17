@@ -18,7 +18,7 @@ public class HumanPlayer extends Player {
 
 
     @Override
-    void playOneTurn(boolean blacksTurn) {
+    public void playOneTurn(boolean blacksTurn) {
         this.canPlay = true;
         int row, col;
         row = scanner.nextInt();

@@ -19,7 +19,7 @@ public class GridBoard extends GridPane {
         this.WPlayer = WPlayer;
         this.black = black;
         this.white = white;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GridBoardFX.fxml"));
+       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GridBoardFX.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -27,7 +27,7 @@ public class GridBoard extends GridPane {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }
+        }*/
         this.getChildren().clear();
 
         int height = (int)this.getPrefHeight();
@@ -39,7 +39,7 @@ public class GridBoard extends GridPane {
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 if (board.getCell(i,j) ==Color.empty )
-                    this.add(new Circle(20, javafx.scene.paint.Color.ORANGE), j, i);
+                    this.add(new Circle(20, javafx.scene.paint.Color.TRANSPARENT), j, i);
                 else
                     if (board.getCell(i,j) ==Color.black )
                         this.add(new Circle(20, javafx.scene.paint.Color.web(black)), j, i);
