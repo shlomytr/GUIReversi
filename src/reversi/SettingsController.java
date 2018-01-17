@@ -9,6 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,10 +32,28 @@ public class SettingsController  implements Initializable {
         boardSize.getValue().toString();
         String color1 = firstColor.getValue();
         String color2 = secondColor.getValue();
-//        System.out.println(color1);
-
-        //save the parameters to the file
-
+        BufferedWriter bf = null;
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(FILENAME);
+            bf = new BufferedWriter(fw);
+            bf.write(Integer.toString(size));
+            bf.newLine();
+            bf.write(color1);
+            bf.newLine();
+            bf.write(color2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bf != null)
+                    bf.close();
+                if (fw != null)
+                    fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
         try {
             Stage primaryStage = (Stage) this.save.getScene().getWindow();
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
