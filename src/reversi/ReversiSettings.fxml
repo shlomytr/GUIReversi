@@ -19,11 +19,12 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="186.0" minHeight="5.0" prefHeight="47.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="186.0" minHeight="5.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="192.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label prefHeight="19.0" prefWidth="111.0" text="Player 2 Color:" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -46,10 +47,16 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Button fx:id="save" mnemonicParsing="false" onAction="#save" text="save" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-      <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" text="cancel" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <Button fx:id="save" mnemonicParsing="false" onAction="#save" text="save" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" text="cancel" GridPane.columnIndex="3" GridPane.rowIndex="5" />
       <ComboBox fx:id="firstColor" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <ComboBox fx:id="secondColor" layoutX="250.0" layoutY="139.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <ComboBox fx:id="boardSize" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Label layoutX="130.0" layoutY="190.0" prefHeight="19.0" prefWidth="111.0" text="First Player:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="firstPlayer" layoutX="250.0" layoutY="147.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
    </children>
 </GridPane>
