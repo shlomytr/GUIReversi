@@ -1,29 +1,18 @@
 package reversi;
 
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import logic.*;
-
-import java.io.IOException;
-import java.util.TreeMap;
-
 import static javafx.scene.paint.Color.TRANSPARENT;
-import static javafx.scene.paint.Color.YELLOW;
 
 public class GridBoard extends GridPane {
     private static String black,white;
-    private static HumanPlayer BPlayer,WPlayer;
-    private static DeafultLogic logic;
     private static Board board;
-    public GridBoard(Board board, DeafultLogic logic, HumanPlayer BPlayer, HumanPlayer WPlayer,String black,String white) {
+    public GridBoard(Board board, String black, String white) {
         this.board = board;
-        this.logic = logic;
-        this. BPlayer=BPlayer;
-        this.WPlayer = WPlayer;
         this.black = black;
         this.white = white;
 
@@ -46,7 +35,6 @@ public class GridBoard extends GridPane {
                 Rectangle rectangle = new Rectangle(cellWidth, cellHeight, color);
                 rectangle.setStroke(javafx.scene.paint.Color.BLACK);
                 this.add(rectangle, i, j);
-
 
                 if (board.getCell(i, j) == Color.empty) {
                     Circle circle = new Circle(radius, TRANSPARENT);

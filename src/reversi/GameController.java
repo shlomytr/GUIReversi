@@ -48,7 +48,7 @@ public class GameController implements Initializable {
             Stage primaryStage = (Stage) this.exit.getScene().getWindow();
             VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
             Scene scene = new Scene(root, 600, 400);
-//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("ReversiMenu.css").toExternalForm());
             primaryStage.setTitle("Reversi Game");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -83,7 +83,7 @@ public class GameController implements Initializable {
         BPlayer = new HumanPlayer(logic);
         WPlayer = new HumanPlayer(logic);
         logic.possibleMoves(firstsTurn, 2, null);
-        gridBoard = new GridBoard(board, logic, BPlayer, WPlayer, black, white);
+        gridBoard = new GridBoard(board, black, white);
         gridBoard.setOnMouseClicked(event -> {
             double x = event.getX();
             double y = event.getY();
