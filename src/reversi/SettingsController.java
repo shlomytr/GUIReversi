@@ -38,6 +38,11 @@ public class SettingsController implements Initializable {
     private Button save;
     private static final String FILENAME = "./src/settingsFile.txt";
 
+    /**
+     * save the changes in the settings when the user is clicking on save button
+     * and returns to the first menu.
+     * @name save
+     **/
     @FXML
     public void save() {
         int size = boardSize.getValue();
@@ -92,6 +97,12 @@ public class SettingsController implements Initializable {
 
     }
 
+    /**
+     * discard all the changes in the settings when the user is clicking on save button
+     * and returns to the first menu.
+     *
+     * @name cancel
+     **/
     @FXML
     public void cancel() {
         try {
@@ -107,6 +118,10 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * initialize the settings menu. read the settings file and updates all hte fields accordingly
+     * @name initialize
+     **/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         firstColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");

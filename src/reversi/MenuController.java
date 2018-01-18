@@ -22,6 +22,11 @@ public class MenuController {
     @FXML
     private Button exit;
 
+    /**
+     * starts the game - moves tp the game when the start button is clicked
+     *
+     * @name gameStart
+     **/
     @FXML
     private void gameStart() {
         Stage stage = (Stage) start.getScene().getWindow();
@@ -38,6 +43,11 @@ public class MenuController {
         }
     }
 
+    /**
+     * moves to the settings menu - moves tp the settings when the settings button is clicked
+     *
+     * @name gameSettings
+     **/
     @FXML
     private void gameSettings() {
         Stage stage = (Stage) this.settings.getScene().getWindow();
@@ -53,11 +63,15 @@ public class MenuController {
         }
     }
 
+    /**
+     * exits the game - closing everything
+     *
+     * @name gameExit
+     **/
     @FXML
     private void gameExit() {
         Stage stage = (Stage) this.exit.getScene().getWindow();
         stage.close();
     }
-
 
 }
