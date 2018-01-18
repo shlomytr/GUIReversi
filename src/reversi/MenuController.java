@@ -13,13 +13,22 @@ import java.io.IOException;
 
 public class MenuController {
 
-    @FXML private Button start;
+    @FXML
+    private Button start;
 
-    @FXML private Button settings;
+    @FXML
+    private Button settings;
 
-    @FXML private Button exit;
+    @FXML
+    private Button exit;
 
-    @FXML private void gameStart() {
+    /**
+     * starts the game - moves tp the game when the start button is clicked
+     *
+     * @name gameStart
+     **/
+    @FXML
+    private void gameStart() {
         Stage stage = (Stage) start.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ReversiGame.fxml"));
         try {
@@ -34,8 +43,14 @@ public class MenuController {
         }
     }
 
-    @FXML private void gameSettings() {
-        Stage stage = (Stage)this.settings.getScene().getWindow();
+    /**
+     * moves to the settings menu - moves tp the settings when the settings button is clicked
+     *
+     * @name gameSettings
+     **/
+    @FXML
+    private void gameSettings() {
+        Stage stage = (Stage) this.settings.getScene().getWindow();
         try {
             GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("ReversiSettings.fxml"));
             Scene scene = new Scene(root, 600, 400);
@@ -43,16 +58,20 @@ public class MenuController {
             stage.setTitle("Settings");
             stage.setScene(scene);
             stage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML private void gameExit() {
+    /**
+     * exits the game - closing everything
+     *
+     * @name gameExit
+     **/
+    @FXML
+    private void gameExit() {
         Stage stage = (Stage) this.exit.getScene().getWindow();
         stage.close();
     }
 
-
-
-    }
+}
