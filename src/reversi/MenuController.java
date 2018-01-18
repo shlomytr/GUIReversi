@@ -26,7 +26,7 @@ public class MenuController {
             HBox root = (HBox) loader.load();
             loader.setController(new GameController());
             Scene gameScene = new Scene(root, 600, 400);
-//            gameScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//            gameScene.getStylesheets().add(getClass().getResource("ReversiBoard.css").toExternalForm());
             stage.setScene(gameScene);
             stage.show();
         } catch (IOException e) {
@@ -39,8 +39,7 @@ public class MenuController {
         try {
             GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("ReversiSettings.fxml"));
             Scene scene = new Scene(root, 600, 400);
-            //todo find out what the comment do
-//            scene.getStylesheets().add(getClass().getResource("settingsStyle.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("ReversiSettings.css").toExternalForm());
             stage.setTitle("Settings");
             stage.setScene(scene);
             stage.show();

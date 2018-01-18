@@ -1,6 +1,6 @@
 .root {
-                                        -fx-background-image: url("menu.jpeg")
-                                    }
+    -fx-background-image: url("settings.jpeg")
+}
 .button {
     -fx-alignment: center;
     -fx-text-fill: white;
