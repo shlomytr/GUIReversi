@@ -75,7 +75,7 @@ public class SettingsController implements Initializable {
                 Stage primaryStage = (Stage) this.save.getScene().getWindow();
                 VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
                 Scene scene = new Scene(root, 600, 400);
-//            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("ReversiMenu.css").toExternalForm());
                 primaryStage.setTitle("Reversi Game");
                 primaryStage.setScene(scene);
                 primaryStage.show();

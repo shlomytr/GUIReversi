@@ -29,7 +29,7 @@ public class GameController implements Initializable {
     private static Board board;
     private static boolean firstsTurn;
     private static final String FILENAME = "./src/settingsFile.txt";
-    private static final double PANELSIZE = 400;
+    private static final double PANELSIZE = 399;
     @FXML
     private Button exit;
     private GridBoard gridBoard;
