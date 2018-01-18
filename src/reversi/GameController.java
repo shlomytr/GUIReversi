@@ -67,15 +67,23 @@ public class GameController implements Initializable {
             boardSize = (Integer.parseInt(reader.readLine()));
             black = reader.readLine();
             white = reader.readLine();
+            int tmp = Integer.parseInt(reader.readLine());
+            if (tmp==1)
+                firstsTurn=true;
+            else if (tmp==2)
+                firstsTurn= false;
 
         } catch (IOException e) {
             boardSize = 8;
             black = "Black";
             white = "White";
+            firstsTurn=true;
             sendAlert(0,"Error: Error reading file", "The default settings will be used.");
         }
-        firstsTurn = true;
-        currentPlayer.setText("Current Player: " + black);
+        if (firstsTurn)
+            currentPlayer.setText("Current Player: " + black);
+        else
+            currentPlayer.setText("Current Player: " + white);
         player1L.setText(black + " Score: 2");
         player2L.setText(white + " Score: 2");
         board = new Board(boardSize);

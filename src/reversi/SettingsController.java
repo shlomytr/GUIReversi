@@ -31,6 +31,8 @@ public class SettingsController implements Initializable {
     @FXML
     private ComboBox<String> secondColor;
     @FXML
+    private ComboBox<Integer> firstPlayer;
+    @FXML
     private Button cancel;
     @FXML
     private Button save;
@@ -42,6 +44,7 @@ public class SettingsController implements Initializable {
         boardSize.getValue().toString();
         String color1 = firstColor.getValue();
         String color2 = secondColor.getValue();
+        int turn=firstPlayer.getValue();
 
         if (color1 == color2) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -59,6 +62,9 @@ public class SettingsController implements Initializable {
                 bf.write(color1);
                 bf.newLine();
                 bf.write(color2);
+                bf.newLine();
+                bf.write(Integer.toString(turn));
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -106,6 +112,7 @@ public class SettingsController implements Initializable {
         firstColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         secondColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         boardSize.getItems().addAll(4, 6, 8, 10, 12, 14, 16, 18, 20);
+        firstPlayer.getItems().addAll(1,2);
 
         BufferedReader reader = null;
         try {
@@ -113,6 +120,7 @@ public class SettingsController implements Initializable {
             boardSize.setValue(Integer.parseInt(reader.readLine()));
             firstColor.setValue(reader.readLine());
             secondColor.setValue(reader.readLine());
+            firstPlayer.setValue(Integer.parseInt(reader.readLine()));
         } catch (IOException e) {
             System.out.println(" Something went wrong while reading !");
         }
