@@ -28,7 +28,7 @@ public class GameController implements Initializable {
     private static DeafultLogic logic;
     private static Board board;
     private static boolean firstsTurn;
-    private static final String FILENAME = "./src/settingsFile.txt";
+    private static final String FILENAME = "settingsFile.txt";
     private static final double PANELSIZE = 399;
     @FXML
     private Button exit;
@@ -43,12 +43,6 @@ public class GameController implements Initializable {
     private Label player2L;
 
     @FXML
-
-    /**
-     * @name : exitToMenu
-     * @parameters : no parameters
-     * @return : the function returns to the menu
-     **/
     private void exitToMenu() {
         try {
             Stage primaryStage = (Stage) this.exit.getScene().getWindow();
@@ -65,13 +59,6 @@ public class GameController implements Initializable {
 
 
     @Override
-
-    /**
-     * @name : initialize
-     * @parameters : no parameters
-     * @return : the function reads from the settings file and sets the board. when a tile is pressed this function recognize it.
-     **/
-
     public void initialize(URL location, ResourceBundle resources) {
         int boardSize;
         BufferedReader reader = null;
@@ -81,17 +68,16 @@ public class GameController implements Initializable {
             black = reader.readLine();
             white = reader.readLine();
             int tmp = Integer.parseInt(reader.readLine());
-            if (tmp == 1)
-                firstsTurn = true;
-            else if (tmp == 2)
-                firstsTurn = false;
+            if (tmp==1)
+                firstsTurn=true;
+            else if (tmp==2)
+                firstsTurn= false;
 
         } catch (IOException e) {
             boardSize = 8;
             black = "Black";
             white = "White";
-            firstsTurn = true;
-            sendAlert(0, "Error: Error reading file", "The default settings will be used.");
+            firstsTurn=true;
         }
         if (firstsTurn)
             currentPlayer.setText("Current Player: " + black);
@@ -117,13 +103,6 @@ public class GameController implements Initializable {
         root.getChildren().add(0, gridBoard);
     }
 
-
-    /**
-     * @return : the function calculates the index of the tile that was pressed
-     * @name : initialize
-     * @parameters : the x and y of the clicked tile
-     **/
-
     private static Point getClickedPoint(double x, double y) {
         Double sizeOfCell = ((double) (PANELSIZE)) / ((double) (board.getBoardSize()));
         double x1 = x / sizeOfCell;
@@ -131,12 +110,6 @@ public class GameController implements Initializable {
         return new Point((int) x1, (int) y1);
     }
 
-    /**
-     * @return : the function runs the game - if the tile that was pressed is a legit move the game puts the tile in the board
-     * if not, an alert is shown.
-     * @name : tryToPlay
-     * @parameters : a point of the x and y of the clicked tile
-     **/
 
     private void tryToPlay(Point p) {
         logic.possibleMoves(firstsTurn, 2, null);
@@ -153,11 +126,11 @@ public class GameController implements Initializable {
             else
                 currentPlayer.setText("Current Player: " + white);
         } else if (!board.isFull())
-            sendAlert(1, "Invalid Move", "please chose a valid move");
+            sendAlert(1 ,"Invalid Move", "please chose a valid move");
         if (board.isFull())
             gameOver();
         if (!isNextMoveExist && !board.isFull()) {
-            sendAlert(1, "No Move", "There is no possible move\nThe turn goes to the other player");
+            sendAlert(1,"No Move", "There is no possible move\nThe turn goes to the other player");
             firstsTurn = !firstsTurn;
             isNextMoveExist = logic.possibleMoves(firstsTurn, 2, null);
             gridBoard.draw();
@@ -173,30 +146,25 @@ public class GameController implements Initializable {
 
     }
 
-    /**
-     * @return : the function shows an alert of the final score and who won
-     * @name : gameOver
-     * @parameters : no parameters
-     **/
-
-    private void gameOver() {
+    private void gameOver(){
         String winner;
         if (board.getBTiles() > board.getWTiles())
-            winner = black + "!";
+            winner=black+"!";
         else if (board.getBTiles() < board.getWTiles())
-            winner = white + "!";
+            winner=white+"!";
         else
-            winner = "no one! The game ended as a draw!";
+            winner="no one! The game ended as a draw!";
 
-        sendAlert(1, "The winner is " + winner, "The game is finished!\nThe final score is: "
-                + black + " = " + board.getBTiles() + "\t" + white + " = " + board.getWTiles());
+        sendAlert(1,"The winner is "+ winner,"The game is finished!\nThe final score is: "
+                +black+" = " + board.getBTiles() + "\t"+ white+" = " + board.getWTiles());
 
     }
 
 
+
     public void sendAlert(int type, String header, String contact) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        if (type == 1)
+        if(type == 1)
             alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(header);
         alert.setContentText(contact);

@@ -36,7 +36,7 @@ public class SettingsController implements Initializable {
     private Button cancel;
     @FXML
     private Button save;
-    private static final String FILENAME = "./src/settingsFile.txt";
+    private static final String FILENAME = "settingsFile.txt";
 
     /**
      * save the changes in the settings when the user is clicking on save button
@@ -137,7 +137,10 @@ public class SettingsController implements Initializable {
             secondColor.setValue(reader.readLine());
             firstPlayer.setValue(Integer.parseInt(reader.readLine()));
         } catch (IOException e) {
-            System.out.println(" Something went wrong while reading !");
+            boardSize.setValue(8);
+            firstColor.setValue("Black");
+            secondColor.setValue("White");
+            firstPlayer.setValue(1);
         }
     }
 }
