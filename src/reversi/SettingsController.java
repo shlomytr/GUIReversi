@@ -44,7 +44,7 @@ public class SettingsController implements Initializable {
         boardSize.getValue().toString();
         String color1 = firstColor.getValue();
         String color2 = secondColor.getValue();
-        int turn=firstPlayer.getValue();
+        int turn = firstPlayer.getValue();
 
         if (color1 == color2) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -81,7 +81,7 @@ public class SettingsController implements Initializable {
                 Stage primaryStage = (Stage) this.save.getScene().getWindow();
                 VBox root = (VBox) FXMLLoader.load(getClass().getResource("ReversiMenu.fxml"));
                 Scene scene = new Scene(root, 600, 400);
-            scene.getStylesheets().add(getClass().getResource("ReversiMenu.css").toExternalForm());
+                scene.getStylesheets().add(getClass().getResource("ReversiMenu.css").toExternalForm());
                 primaryStage.setTitle("Reversi Game");
                 primaryStage.setScene(scene);
                 primaryStage.show();
@@ -112,7 +112,7 @@ public class SettingsController implements Initializable {
         firstColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         secondColor.getItems().addAll("Black", "White", "Red", "Blue", "Yellow", "Pink", "Gray", "Green", "Brown");
         boardSize.getItems().addAll(4, 6, 8, 10, 12, 14, 16, 18, 20);
-        firstPlayer.getItems().addAll(1,2);
+        firstPlayer.getItems().addAll(1, 2);
 
         BufferedReader reader = null;
         try {

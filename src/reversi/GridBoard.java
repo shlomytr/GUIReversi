@@ -6,11 +6,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import logic.*;
+
 import static javafx.scene.paint.Color.TRANSPARENT;
 
 public class GridBoard extends GridPane {
-    private static String black,white;
+    private static String black, white;
     private static Board board;
+
+    /**
+     * Construct a gridBoard for the game
+     *
+     * @param board the board of the game
+     * @param black the color of the first player
+     * @param white the color of the second player
+     */
+
     public GridBoard(Board board, String black, String white) {
         this.board = board;
         this.black = black;
@@ -18,19 +28,25 @@ public class GridBoard extends GridPane {
 
     }
 
+    /**
+     * @return : the function draws the GUI board, all the tiles that are in the board and all the possible moves
+     * @name : draw
+     * @parameters : no parameters
+     **/
+
     public void draw() {
         this.getChildren().clear();
-        int height = (int)this.getPrefHeight();
-        int width = (int)this.getPrefWidth();
+        int height = (int) this.getPrefHeight();
+        int width = (int) this.getPrefWidth();
 
         int cellHeight = height / board.getBoardSize();
         int cellWidth = width / board.getBoardSize();
-        int radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) /2;
+        int radius = (((cellHeight > cellWidth) ? cellWidth : cellHeight) - 10) / 2;
         javafx.scene.paint.Color color;
         for (int i = 0; i < board.getBoardSize(); i++) {
             for (int j = 0; j < board.getBoardSize(); j++) {
                 color = TRANSPARENT;
-                if(board.getPosCell(i,j))
+                if (board.getPosCell(i, j))
                     color = javafx.scene.paint.Color.YELLOW;
                 Rectangle rectangle = new Rectangle(cellWidth, cellHeight, color);
                 rectangle.setStroke(javafx.scene.paint.Color.BLACK);
